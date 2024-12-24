@@ -1,0 +1,23 @@
+<div class="window main-window glass active flex flex-col justify-between" [class.cursor-wait]="isLoading">
+  <div class="title-bar">
+    <div class="title-bar-text">File Manager</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body flex-1 pb-[28px]">
+    <app-main-menubar></app-main-menubar>
+    <div class="grid grid-cols-5 gap-0 h-full">
+      <app-main-sidepanel [commonFolders]="commonFolders" class="h-full"></app-main-sidepanel>
+      <app-viewer class="h-full col-span-4"></app-viewer>
+    </div>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field">Press F1 for help</p>
+    <p class="status-bar-field">Slide 1</p>
+    <p class="status-bar-field">CPU Usage: 14%</p>
+  </div>
+</div>
+
+
