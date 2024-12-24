@@ -8,7 +8,7 @@ import {
   CommonFolder,
   FileService,
   SystemService,
-  SystemStatus
+  SystemStatus,
 } from './services/integration';
 import { LoadingService } from './services/loading.service';
 
@@ -23,7 +23,7 @@ import { LoadingService } from './services/loading.service';
   ],
   providers: [],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'webapp';
@@ -35,9 +35,8 @@ export class AppComponent {
   constructor(
     private readonly systemService: SystemService,
     private readonly loadingService: LoadingService,
-    private readonly fileService: FileService
-  ) {
-  }
+    private readonly fileService: FileService,
+  ) {}
 
   ngOnDestroy() {
     if (this.updateSystemStatusInterval)
@@ -45,26 +44,29 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
     this.loadingService.getSubscription().subscribe({
-      next: isLoading => {
+      next: (isLoading) => {
         this.isLoading = isLoading;
-      }
-  })
+      },
+    });
 
-    this.updateSystemStatusInterval = setInterval(
-      () =>
-        this.systemService.systemControllerGetSystemStatus().subscribe({
-          next: (status) => {
-            this.systemStatus = status;
-          }
-        }),
-      5000
-    );
+    const loadSystemStatus = () => {
+      this.systemService.systemControllerGetSystemStatus().subscribe({
+        next: (status) => {
+          this.systemStatus = status;
+        },
+        complete: () => {
+          this.updateSystemStatusInterval = setTimeout(loadSystemStatus, 5000);
+        },
+      });
+    };
+
+    this.updateSystemStatusInterval = setTimeout(loadSystemStatus, 5000);
+
     this.systemService.systemControllerGetCommonFolders().subscribe({
       next: (folders) => {
         this.commonFolders = folders;
-      }
+      },
     });
   }
 }

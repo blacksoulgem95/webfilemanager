@@ -6,10 +6,10 @@ import { Observable, Subject } from 'rxjs';
 })
 export class LoadingService {
   _loadingMap: { [key: string]: boolean } = {};
-  private _feeder: Subject<boolean>
+  private _feeder: Subject<boolean>;
 
   constructor() {
-    this._feeder = new Subject<boolean>()
+    this._feeder = new Subject<boolean>();
   }
 
   setLoading(key: any, status: boolean) {
@@ -18,19 +18,20 @@ export class LoadingService {
     } else {
       delete this._loadingMap[key];
     }
-    this.updateValue()
+    this.updateValue();
   }
 
   updateValue() {
+    console.log('update loading value');
     let isLoading = false;
     for (let loading of Object.values(this._loadingMap)) {
-      isLoading = isLoading || loading
+      isLoading = isLoading || loading;
     }
-
-    this._feeder.next(isLoading)
+    console.log('loading value: ', isLoading, this._loadingMap);
+    this._feeder.next(isLoading);
   }
 
   getSubscription() {
-    return this._feeder.asObservable()
+    return this._feeder.asObservable();
   }
 }
