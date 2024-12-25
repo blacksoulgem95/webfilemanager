@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ApplicativeError } from '../model/applicativeError';
 import { RenameOperationRequest } from '../model/renameOperationRequest';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -57,24 +58,25 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Deletes a single file
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerDeleteFile(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerDeleteFile(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerDeleteFile(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerDeleteFile(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteFile(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteFile(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteFile(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteFile(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerDeleteFile.');
+            throw new Error('Required parameter path was null or undefined when calling deleteFile.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -97,24 +99,25 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Deletes a single file
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerDeleteFile_1(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerDeleteFile_1(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerDeleteFile_1(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerDeleteFile_1(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteFile_1(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteFile_1(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteFile_1(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteFile_1(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerDeleteFile_1.');
+            throw new Error('Required parameter path was null or undefined when calling deleteFile_1.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -137,18 +140,18 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Gets the metadata of a single file of folder, if folder also the content light metadata is provided
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerGetFile(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerGetFile(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerGetFile(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerGetFile(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFile(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getFile(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getFile(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getFile(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerGetFile.');
+            throw new Error('Required parameter path was null or undefined when calling getFile.');
         }
 
         let headers = this.defaultHeaders;
@@ -178,18 +181,18 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Gets the metadata of a single file of folder, if folder also the content light metadata is provided
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerGetFile_2(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerGetFile_2(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerGetFile_2(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerGetFile_2(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getFile_2(path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getFile_2(path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getFile_2(path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getFile_2(path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerGetFile_2.');
+            throw new Error('Required parameter path was null or undefined when calling getFile_2.');
         }
 
         let headers = this.defaultHeaders;
@@ -219,23 +222,23 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Renames / Moves a single file
      * @param body 
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerRenameFile(body: RenameOperationRequest, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerRenameFile(body: RenameOperationRequest, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerRenameFile(body: RenameOperationRequest, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerRenameFile(body: RenameOperationRequest, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public renameFile(body: RenameOperationRequest, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public renameFile(body: RenameOperationRequest, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public renameFile(body: RenameOperationRequest, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public renameFile(body: RenameOperationRequest, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling fileControllerRenameFile.');
+            throw new Error('Required parameter body was null or undefined when calling renameFile.');
         }
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerRenameFile.');
+            throw new Error('Required parameter path was null or undefined when calling renameFile.');
         }
 
         let headers = this.defaultHeaders;
@@ -271,23 +274,23 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Renames / Moves a single file
      * @param body 
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerRenameFile_3(body: RenameOperationRequest, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerRenameFile_3(body: RenameOperationRequest, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerRenameFile_3(body: RenameOperationRequest, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerRenameFile_3(body: RenameOperationRequest, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public renameFile_3(body: RenameOperationRequest, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public renameFile_3(body: RenameOperationRequest, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public renameFile_3(body: RenameOperationRequest, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public renameFile_3(body: RenameOperationRequest, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling fileControllerRenameFile_3.');
+            throw new Error('Required parameter body was null or undefined when calling renameFile_3.');
         }
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerRenameFile_3.');
+            throw new Error('Required parameter path was null or undefined when calling renameFile_3.');
         }
 
         let headers = this.defaultHeaders;
@@ -323,23 +326,23 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Uploads a single file
      * @param file 
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerUploadFileForm(file: Blob, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerUploadFileForm(file: Blob, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerUploadFileForm(file: Blob, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerUploadFileForm(file: Blob, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public uploadFileForm(file: Blob, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public uploadFileForm(file: Blob, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public uploadFileForm(file: Blob, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public uploadFileForm(file: Blob, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling fileControllerUploadFile.');
+            throw new Error('Required parameter file was null or undefined when calling uploadFile.');
         }
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerUploadFile.');
+            throw new Error('Required parameter path was null or undefined when calling uploadFile.');
         }
 
         let headers = this.defaultHeaders;
@@ -386,23 +389,23 @@ export class FileService {
 
     /**
      * 
-     * 
+     * Uploads a single file
      * @param file 
      * @param path 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public fileControllerUploadFile_4Form(file: Blob, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public fileControllerUploadFile_4Form(file: Blob, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public fileControllerUploadFile_4Form(file: Blob, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public fileControllerUploadFile_4Form(file: Blob, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public uploadFile_4Form(file: Blob, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public uploadFile_4Form(file: Blob, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public uploadFile_4Form(file: Blob, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public uploadFile_4Form(file: Blob, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling fileControllerUploadFile_4.');
+            throw new Error('Required parameter file was null or undefined when calling uploadFile_4.');
         }
 
         if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling fileControllerUploadFile_4.');
+            throw new Error('Required parameter path was null or undefined when calling uploadFile_4.');
         }
 
         let headers = this.defaultHeaders;

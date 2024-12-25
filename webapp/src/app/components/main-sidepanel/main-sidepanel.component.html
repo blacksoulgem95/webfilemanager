@@ -1,7 +1,17 @@
 <div class="h-full bg-white border-r-[1px] p-3">
+  <div class="title mb-3 text-xl font-bold">
+    <xpi-xp-star width="28px"></xpi-xp-star>
+    Favourites
+  </div>
   <ul>
-    <li *ngFor="let d of commonFolders">
-      {{d.icon}} {{d.filename}}
+    <li (click)="folderSelection.next(d)" class="seven-hover py-0.5 px-1" *ngFor="let d of commonFolders" [class.selected]="selectedFolder?.basePath === d.basePath && selectedFolder?.filename === d.filename">
+      <span *ngIf="d.icon === 'home'">
+        <xpi-xp-network-home height="24px" width="24px"></xpi-xp-network-home>
+      </span>
+      <span *ngIf="d.icon === 'root'">
+        <xpi-xp-network-disk height="24px" width="24px"></xpi-xp-network-disk>
+      </span>
+      &nbsp;{{d.filename}}
     </li>
   </ul>
 </div>

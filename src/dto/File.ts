@@ -29,6 +29,9 @@ export default class File {
   @ApiProperty()
   isHidden: boolean = false;
 
+  @ApiProperty()
+  isRoot: boolean = false;
+
   @ApiProperty({
     type: File,
     isArray: true,

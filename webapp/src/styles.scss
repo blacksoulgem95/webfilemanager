@@ -14,11 +14,35 @@ html {
 html, body {
   margin: 0;
   height: 100%;
+
   app-root {
     //position: fixed;
     //top: 16px;
     //bottom: 16px;
     //left: 16px;
     //right: 16px;
+  }
+}
+
+.seven-hover {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-sizing: border-box;
+
+  &:hover {
+    background: (var(--item-hover-background));
+    border-color: #b8d6fb;
+  }
+
+  &.selected {
+    background: (var(--item-hover-background));
+    border-color: darken(#b8d6fb, 10%);
+  }
+}
+
+.selected {
+  & > .seven-hover {
+    background: (var(--item-hover-background));
+    border-color: darken(#b8d6fb, 10%);
   }
 }

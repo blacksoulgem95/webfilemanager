@@ -1,4 +1,4 @@
-<div class="window main-window glass active flex flex-col justify-between" [class.cursor-wait]="isLoading">
+<div [class.cursor-wait]="isLoading" class="window main-window glass active flex flex-col justify-between">
   <div class="title-bar">
     <div class="title-bar-text">File Manager</div>
     <div class="title-bar-controls">
@@ -6,17 +6,50 @@
       <button aria-label="Close"></button>
     </div>
   </div>
-  <div class="window-body flex-1 pb-[28px]">
+  <div class="window-body flex-1 flex flex-col">
     <app-main-menubar></app-main-menubar>
-    <div class="grid grid-cols-5 gap-0 h-full">
-      <app-main-sidepanel [commonFolders]="commonFolders" class="h-full"></app-main-sidepanel>
-      <app-viewer class="h-full col-span-4"></app-viewer>
+    <div class="searchbar flex flex-row gap-3 justify-start items-center py-1 px-2">
+      <div class="cursor-pointer hover:brightness-110 active:brightness-90">
+        <xpi-xp-backward width="16px"></xpi-xp-backward>
+      </div>
+      <div class="cursor-pointer hover:brightness-110 active:brightness-90">
+        <xpi-xp-forward width="16px"></xpi-xp-forward>
+      </div>
+      <div [formGroup]="form" class="searchbox w-full">
+        <input class="w-full" formControlName="pathSearch" placeholder="Path" type="search" />
+        <button aria-label="search"></button>
+      </div>
+    </div>
+    <div class="flex-1 flex">
+      <div class="flex-1 grid grid-cols-5 gap-0">
+        <app-main-sidepanel (folderSelection)="selectItem($event)" [commonFolders]="commonFolders"
+                            [selectedFolder]="selectedFolder" class="flex-1"></app-main-sidepanel>
+        <div class="col-span-4 flex-1 relative">
+          <div class="absolute top-0 bottom-0 right-0 left-0 overflow-hidden overflow-y-auto overflox-x-auto scroll-auto has-scrollbar">
+            <app-viewer (itemSelection)="selectItem($event)" [selectedItem]="selectedFolder"></app-viewer>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="status-bar">
-    <p class="status-bar-field">Press F1 for help</p>
-    <p class="status-bar-field">Slide 1</p>
-    <p class="status-bar-field">CPU Usage: 14%</p>
+    <p class="status-bar-field">
+      Disk: {{systemStatus?.disk?.count | byte}}&nbsp;
+      Free: {{systemStatus?.disk?.free | byte}}&nbsp;
+      Used: {{systemStatus?.disk?.usage | byte}}
+    </p>
+    <p class="status-bar-field">
+      OS Platform: {{systemStatus?.os?.platform}} |
+      SysUptime: {{systemStatus?.os?.systemUptime || 0 | duration }} |
+      AppUptime: {{systemStatus?.os?.processUptime || 0 | duration }} |
+      Load AVG: {{systemStatus?.os?.loadAvg}}
+    </p>
+    <p class="status-bar-field">
+      CPU Threads: {{systemStatus?.cpu?.count || 0 | number}} |
+      CPU Usage: {{systemStatus?.cpu?.usage || 0 | percent}} |
+      RAM: {{systemStatus?.memory?.count | byte}} |
+      RAM Available: {{systemStatus?.memory?.freePerc || 0 | percent}}
+    </p>
   </div>
 </div>
 

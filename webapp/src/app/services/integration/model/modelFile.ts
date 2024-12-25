@@ -20,6 +20,7 @@ export interface ModelFile {
     fileSize: number;
     isFolder: boolean;
     isHidden: boolean;
+    isRoot: boolean;
     /**
      * Folder content returned on GET operations
      */

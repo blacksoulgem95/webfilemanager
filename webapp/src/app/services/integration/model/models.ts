@@ -1,3 +1,4 @@
+export * from './applicativeError';
 export * from './commonFolder';
 export * from './filesPathBody';
 export * from './modelFile';

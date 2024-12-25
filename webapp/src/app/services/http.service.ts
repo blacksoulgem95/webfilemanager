@@ -34,7 +34,7 @@ export default class HttpService {
     } else if (response.status < 400) {
       return fromPromise(response.json())
     } else {
-      console.error("Error in handling request", response)
+      console.error("ApplicativeError in handling request", response)
       let data = await response.text()
       try {
         data = JSON.parse(data);

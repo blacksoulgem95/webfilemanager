@@ -58,14 +58,14 @@ export class SystemService {
 
     /**
      * 
-     * 
+     * Retrieves the common folders of the system on which the backend is installed
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public systemControllerGetCommonFolders(observe?: 'body', reportProgress?: boolean): Observable<Array<CommonFolder>>;
-    public systemControllerGetCommonFolders(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CommonFolder>>>;
-    public systemControllerGetCommonFolders(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CommonFolder>>>;
-    public systemControllerGetCommonFolders(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCommonFolders(observe?: 'body', reportProgress?: boolean): Observable<Array<CommonFolder>>;
+    public getCommonFolders(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CommonFolder>>>;
+    public getCommonFolders(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CommonFolder>>>;
+    public getCommonFolders(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -94,14 +94,14 @@ export class SystemService {
 
     /**
      * 
-     * 
+     * Retrieves the common folders of the system on which the backend is installed
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public systemControllerGetCommonFolders_1(observe?: 'body', reportProgress?: boolean): Observable<Array<CommonFolder>>;
-    public systemControllerGetCommonFolders_1(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CommonFolder>>>;
-    public systemControllerGetCommonFolders_1(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CommonFolder>>>;
-    public systemControllerGetCommonFolders_1(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getCommonFolders_1(observe?: 'body', reportProgress?: boolean): Observable<Array<CommonFolder>>;
+    public getCommonFolders_1(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CommonFolder>>>;
+    public getCommonFolders_1(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CommonFolder>>>;
+    public getCommonFolders_1(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -130,14 +130,14 @@ export class SystemService {
 
     /**
      * 
-     * 
+     * Retrieves the current status of the system
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public systemControllerGetSystemStatus(observe?: 'body', reportProgress?: boolean): Observable<SystemStatus>;
-    public systemControllerGetSystemStatus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SystemStatus>>;
-    public systemControllerGetSystemStatus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SystemStatus>>;
-    public systemControllerGetSystemStatus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getSystemStatus(observe?: 'body', reportProgress?: boolean): Observable<SystemStatus>;
+    public getSystemStatus(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SystemStatus>>;
+    public getSystemStatus(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SystemStatus>>;
+    public getSystemStatus(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -166,14 +166,14 @@ export class SystemService {
 
     /**
      * 
-     * 
+     * Retrieves the current status of the system
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public systemControllerGetSystemStatus_2(observe?: 'body', reportProgress?: boolean): Observable<SystemStatus>;
-    public systemControllerGetSystemStatus_2(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SystemStatus>>;
-    public systemControllerGetSystemStatus_2(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SystemStatus>>;
-    public systemControllerGetSystemStatus_2(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getSystemStatus_2(observe?: 'body', reportProgress?: boolean): Observable<SystemStatus>;
+    public getSystemStatus_2(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SystemStatus>>;
+    public getSystemStatus_2(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SystemStatus>>;
+    public getSystemStatus_2(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
