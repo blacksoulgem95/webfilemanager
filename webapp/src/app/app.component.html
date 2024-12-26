@@ -10,10 +10,10 @@
     <app-main-menubar></app-main-menubar>
     <div class="searchbar flex flex-row gap-3 justify-start items-center py-1 px-2">
       <div class="cursor-pointer hover:brightness-110 active:brightness-90">
-        <xpi-xp-backward width="16px"></xpi-xp-backward>
+        <xpi-icon name="back" pack="xp" size="16"></xpi-icon>
       </div>
       <div class="cursor-pointer hover:brightness-110 active:brightness-90">
-        <xpi-xp-forward width="16px"></xpi-xp-forward>
+        <xpi-icon name="forward" pack="xp" size="16"></xpi-icon>
       </div>
       <div [formGroup]="form" class="searchbox w-full">
         <input class="w-full" formControlName="pathSearch" placeholder="Path" type="search" />
@@ -25,7 +25,8 @@
         <app-main-sidepanel (folderSelection)="selectItem($event)" [commonFolders]="commonFolders"
                             [selectedFolder]="selectedFolder" class="flex-1"></app-main-sidepanel>
         <div class="col-span-4 flex-1 relative">
-          <div class="absolute top-0 bottom-0 right-0 left-0 overflow-hidden overflow-y-auto overflox-x-auto scroll-auto has-scrollbar">
+          <div
+            class="absolute top-0 bottom-0 right-0 left-0 overflow-hidden overflow-y-auto overflox-x-auto scroll-auto has-scrollbar">
             <app-viewer (itemSelection)="selectItem($event)" [selectedItem]="selectedFolder"></app-viewer>
           </div>
         </div>

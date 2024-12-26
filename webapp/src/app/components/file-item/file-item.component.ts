@@ -1,10 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModelFile } from '../../services/integration';
 import {
-  XpIconAudioFileComponent,
-  XpIconFolderComponent, XpIconImageFileComponent, XpIconTextFileComponent,
-  XpIconUnknownFileComponent,
-  XpIconVideoFileComponent, XpIconWinrarComponent
+  IconComponent, IconPack, IconPackApplications, IconPackLonghorn, IconPackWhistler, IconPackXp, IconPackXpSP2
 } from 'ngx-xp-icons';
 import { NgComponentOutlet, NgIf } from '@angular/common';
 import { ByteFormatterPipe } from '../../pipes/byte-formatter.pipe';
@@ -13,19 +10,21 @@ import audioExtensions from './audio.extensions';
 import imageExtensions from './image.extensions';
 import textExtensions from './text.extensions';
 import archiveExtensions from './archive.extensions';
+import pdfExtensions from './pdf.extensions';
+
+
+type IconMeta = {
+  name: IconPackXp | IconPackXpSP2 | IconPackLonghorn | IconPackWhistler | IconPackApplications,
+  pack: IconPack
+}
+
 
 @Component({
   selector: 'app-file-item',
   standalone: true,
   imports: [
-    XpIconFolderComponent,
     NgIf,
-    XpIconUnknownFileComponent,
-    XpIconVideoFileComponent,
-    XpIconAudioFileComponent,
-    XpIconImageFileComponent,
-    XpIconTextFileComponent,
-    XpIconWinrarComponent,
+    IconComponent,
     ByteFormatterPipe,
     NgComponentOutlet,
   ],
@@ -35,33 +34,64 @@ import archiveExtensions from './archive.extensions';
 export class FileItemComponent {
   @Input() file!: ModelFile;
 
-  get icon() {
+  get icon():IconMeta {
     if (!this.file) {
-      return XpIconUnknownFileComponent
+      return {
+        name: "unknown-disc",
+        pack: "xp"
+      }
     }
 
     if (this.file.isFolder) {
-      return XpIconFolderComponent;
+      return {
+        name: "folder-closed",
+        pack: "xp"
+      }
     }
 
     const extension = this.file.filename.split('.').pop() || 'UNKNOWN';
 
     if (videoExtensions.indexOf(extension.toLowerCase()) >= 0) {
-      return XpIconVideoFileComponent;
+      return {
+        name: "media-center-file",
+        pack: "xp"
+      };
     }
     if (audioExtensions.indexOf(extension.toLowerCase()) >= 0) {
-      return XpIconAudioFileComponent;
+      return {
+        name: "mp3-player",
+        pack: "xp"
+      };
     }
     if (imageExtensions.indexOf(extension.toLowerCase()) >= 0) {
-      return XpIconImageFileComponent;
+      return {
+        name: "bitmap",
+        pack: "xp"
+      }
     }
     if (textExtensions.indexOf(extension.toLowerCase()) >= 0) {
-      return XpIconTextFileComponent;
+      return {
+        name: "generic-text-document",
+        pack: "xp"
+      };
     }
     if (archiveExtensions.indexOf(extension.toLowerCase()) >= 0) {
-      return XpIconWinrarComponent;
+      return {
+        name: "winrar3",
+        pack: "applications"
+      };
+    }
+    if (pdfExtensions.indexOf(extension.toLowerCase()) >= 0) {
+      return {
+        name: "pdf-file",
+        pack: "applications"
+      };
     }
 
-    return XpIconUnknownFileComponent;
+
+    return {
+      name: "question",
+      pack: "xp"
+    };
   }
 }

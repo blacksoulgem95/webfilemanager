@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center seven-hover py-1 px-1.5 text-center">
-  <ng-container *ngComponentOutlet="icon" />
+  <xpi-icon size="32" [pack]="icon.pack" [name]="icon.name" />
   <span>{{file.filename}}
     <span *ngIf="!file.isFolder">({{file.fileSize | byte}})</span>
   </span>

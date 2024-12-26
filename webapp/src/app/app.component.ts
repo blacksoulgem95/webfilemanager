@@ -14,7 +14,7 @@ import { LoadingService } from './services/loading.service';
 import { ByteFormatterPipe } from './pipes/byte-formatter.pipe';
 import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 import { DurationPipe } from './pipes/duration.pipe';
-import { XpIconBackwardComponent, XpIconForwardComponent } from 'ngx-xp-icons';
+import { IconComponent } from 'ngx-xp-icons';
 import {
   FormControl,
   FormGroup,
@@ -36,8 +36,7 @@ import { join } from './services/utils';
     DurationPipe,
     DecimalPipe,
     PercentPipe,
-    XpIconBackwardComponent,
-    XpIconForwardComponent,
+    IconComponent,
     ReactiveFormsModule,
   ],
   providers: [],
