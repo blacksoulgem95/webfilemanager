@@ -20,6 +20,6 @@ RUN npm install \
 
 RUN rm -rf /app/public/* && mv /app/webapp/dist/webapp/browser /app/public
 
-RUN npm build
+RUN npm run build
 
 ENTRYPOINT ["npm", "start:prod"]
