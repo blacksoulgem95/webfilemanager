@@ -6,7 +6,7 @@
   <ul>
     <li (click)="folderSelection.next(d)" class="seven-hover py-0.5 px-1" *ngFor="let d of commonFolders" [class.selected]="selectedFolder?.basePath === d.basePath && selectedFolder?.filename === d.filename">
       <xpi-icon [name]="getIconName(d)" [pack]="getIconPack(d)" size="24"></xpi-icon>
-      &nbsp;{{d.filename}}
+      &nbsp;{{d.filename || d.basePath}}
     </li>
   </ul>
 </div>

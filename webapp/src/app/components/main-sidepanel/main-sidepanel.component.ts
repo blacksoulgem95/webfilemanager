@@ -24,7 +24,7 @@ export class MainSidepanelComponent {
       case 'home':
         return 'my-documents';
       case 'root':
-        return 'local-disk';
+        return 'my-computer';
       default:
         return 'question';
     }
