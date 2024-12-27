@@ -4,12 +4,12 @@ import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
 export default class ApplicativeError {
   @ApiProperty({
     example: 404,
-    description: "Error code"
+    description: 'Error code',
   })
   status: number;
   @ApiProperty({
-    example: "File not found",
-    description: "Details of the error"
+    example: 'File not found',
+    description: 'Details of the error',
   })
   message?: string;
 

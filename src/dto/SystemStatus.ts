@@ -1,15 +1,15 @@
-import { ApiProperty } from "@nestjs/swagger";
-import Usage from "./Usage";
-import RamUsage from "./RamUsage";
-import OsInfo from "./OsInfo";
+import { ApiProperty } from '@nestjs/swagger';
+import Usage from './Usage';
+import RamUsage from './RamUsage';
+import OsInfo from './OsInfo';
 
 export class SystemStatus {
   @ApiProperty()
-  cpu: Usage
+  cpu: Usage;
   @ApiProperty()
-  disk: Usage
+  disk: Usage;
   @ApiProperty()
-  memory: RamUsage
+  memory: RamUsage;
   @ApiProperty()
-  os: OsInfo
+  os: OsInfo;
 }

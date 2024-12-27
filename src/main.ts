@@ -1,16 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-
-import { join } from 'path';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export const ROUTE_PREFIX = 'api';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  app.setGlobalPrefix('api')
+  app.setGlobalPrefix(ROUTE_PREFIX);
 
   const config = new DocumentBuilder()
     .setTitle('File Manager')
@@ -22,7 +20,7 @@ async function bootstrap() {
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory, {
-    jsonDocumentUrl: 'docs/json'
+    jsonDocumentUrl: 'docs/json',
   });
 
   await app.listen(process.env.PORT ?? 3000);

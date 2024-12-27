@@ -1,7 +1,6 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export default class File {
-
   @ApiProperty()
   filename: string;
 
@@ -35,8 +34,8 @@ export default class File {
   @ApiProperty({
     type: File,
     isArray: true,
-    description: "Folder content returned on GET operations",
-    readOnly: true
+    description: 'Folder content returned on GET operations',
+    readOnly: true,
   })
-  content: File[] = []
+  content: File[] = [];
 }

@@ -1,9 +1,9 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export default class RenameOperationRequest {
   @ApiProperty()
-  originalFullPath: string
+  originalFullPath: string;
 
   @ApiProperty()
-  newFullPath: string
+  newFullPath: string;
 }

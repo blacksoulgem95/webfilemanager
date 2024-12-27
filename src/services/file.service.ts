@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { readdir, rm, rename, rmdir, writeFile } from 'fs/promises';
+import { readdir, rename, rm, rmdir, writeFile } from 'fs/promises';
 import { CommonFolder } from '../dto/CommonFolder';
 import { join } from 'path';
 import { extractMetadataFromFile } from './utils/file';

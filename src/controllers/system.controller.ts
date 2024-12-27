@@ -1,7 +1,7 @@
-import { Controller, Get, Render, Res } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
 import * as os from 'os-utils';
-import { ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SystemStatus } from '../dto/SystemStatus';
 import FileService from '../services/file.service';
 import { CommonFolder } from '../dto/CommonFolder';
@@ -15,8 +15,9 @@ export class SystemController {
   @Get('/folders')
   @ApiTags('system')
   @ApiOperation({
-    operationId: "getCommonFolders",
-    description: "Retrieves the common folders of the system on which the backend is installed"
+    operationId: 'getCommonFolders',
+    description:
+      'Retrieves the common folders of the system on which the backend is installed',
   })
   @ApiOkResponse({
     description: 'Common folders for the System',
@@ -35,8 +36,8 @@ export class SystemController {
     type: SystemStatus,
   })
   @ApiOperation({
-    operationId: "getSystemStatus",
-    description: "Retrieves the current status of the system"
+    operationId: 'getSystemStatus',
+    description: 'Retrieves the current status of the system',
   })
   async getSystemStatus(@Res() res: Response) {
     const disk = await new Promise((resolve) => {
