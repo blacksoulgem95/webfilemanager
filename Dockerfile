@@ -18,7 +18,8 @@ RUN npm install \
     && npm run build \
     && cd ..
 
-RUN cp /app/webapp/dist/webapp/browser/* /app/public
+RUN rm -rf /app/public/* && mv /app/webapp/dist/webapp/browser /app/public
+
 RUN npm build
 
 ENTRYPOINT ["npm", "start:prod"]
