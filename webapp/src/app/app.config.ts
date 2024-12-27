@@ -14,9 +14,11 @@ import {
   ConfigurationParameters,
 } from './services/integration';
 import { environment } from '../environments/environment';
+import { ICON_BASE_PATH_FOR_ASSETS } from 'ngx-xp-icons';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {provide: ICON_BASE_PATH_FOR_ASSETS, useValue: environment.baseUrl},
     provideHttpClient(withInterceptors([LoadingInterceptor])),
     importProvidersFrom(
       ApiModule.forRoot(() => {
