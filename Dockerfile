@@ -22,4 +22,4 @@ RUN rm -rf /app/public/* && mv /app/webapp/dist/webapp/browser /app/public
 
 RUN npm run build
 
-ENTRYPOINT ["npm", "start:prod"]
+ENTRYPOINT ["npm", "run", "start:prod"]
