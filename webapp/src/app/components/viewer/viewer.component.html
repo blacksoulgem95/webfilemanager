@@ -1,4 +1,4 @@
-<div class="bg-white p-2 overflow-hidden justify-start">
+<div class="bg-white p-2 overflow-hidden justify-start h-full">
   <div *ngIf="selectedItem">
     <div *ngIf="(selectedItem?.content?.length || 0) < 1" class="w-full h-full justify-center items-center">
       Empty folder
@@ -6,7 +6,7 @@
     <div class="overflow-y-auto">
       <div class="relative grid grid-cols-3 md:grid-cols-5 lg:grid-cols-10 xl:grid-cols-12 gap-2">
       <app-file-item (click)="clickItem(fileItem)" [file]="fileItem" [class.selected]="activeItem === fileItem"
-                     *ngFor="let fileItem of selectedItem?.content || []"></app-file-item>
+                     *ngFor="let fileItem of items"></app-file-item>
       </div>
     </div>
   </div>

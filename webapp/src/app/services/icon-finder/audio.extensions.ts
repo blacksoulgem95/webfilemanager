@@ -32,6 +32,8 @@ const audioExtensions = [
   'rm',
   'wav',
   'wma',
+  'mid',
+  'midi'
 ]
 
 export default audioExtensions

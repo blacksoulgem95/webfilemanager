@@ -6,28 +6,28 @@
       <button aria-label="Close"></button>
     </div>
   </div>
-  <div class="window-body flex-1 flex flex-col">
+  <div class="window-body flex-1 mt-1 flex flex-col">
     <app-main-menubar></app-main-menubar>
     <div class="searchbar flex flex-row gap-3 justify-start items-center py-1 px-2">
       <div class="cursor-pointer hover:brightness-110 active:brightness-90">
-        <xpi-icon name="back" pack="xp" size="16"></xpi-icon>
+        <xpi-icon (click)="_location.back()" name="back" pack="xp" size="16"></xpi-icon>
       </div>
       <div class="cursor-pointer hover:brightness-110 active:brightness-90">
-        <xpi-icon name="forward" pack="xp" size="16"></xpi-icon>
+        <xpi-icon (click)="_location.forward()" name="forward" pack="xp" size="16"></xpi-icon>
       </div>
-      <div [formGroup]="form" class="searchbox w-full">
-        <input class="w-full" formControlName="pathSearch" placeholder="Path" type="search" />
-        <button aria-label="search"></button>
+      <div [formGroup]="form" class="field-row w-full flex flex-row gap-1">
+        <input formControlName="pathSearch" placeholder="Path" type="text" class="flex-1"/>
+        <button (click)="router.navigate(['/'], {queryParams: {path: form.get('pathSearch')?.value}})">Go</button>
       </div>
     </div>
     <div class="flex-1 flex">
-      <div class="flex-1 grid grid-cols-5 gap-0">
+      <div class="flex-1 grid grid-cols-5 gap-0 bg-white">
         <app-main-sidepanel (folderSelection)="selectItem($event)" [commonFolders]="commonFolders"
                             [selectedFolder]="selectedFolder" class="flex-1"></app-main-sidepanel>
         <div class="col-span-4 flex-1 relative">
           <div
             class="absolute top-0 bottom-0 right-0 left-0 overflow-hidden overflow-y-auto overflox-x-auto scroll-auto has-scrollbar">
-            <app-viewer (itemSelection)="selectItem($event)" [selectedItem]="selectedFolder"></app-viewer>
+            <app-viewer class="h-full" (itemSelection)="selectItem($event)" [selectedItem]="selectedFolder"></app-viewer>
           </div>
         </div>
       </div>

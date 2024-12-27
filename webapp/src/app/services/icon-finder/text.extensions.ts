@@ -1,7 +1,7 @@
 const textExtensions = [
   'txt',
-  'doc',
-  'docx',
+  'log',
+  'md'
 ]
 
 export default textExtensions

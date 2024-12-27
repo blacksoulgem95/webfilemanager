@@ -2,15 +2,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonFolder, ModelFile } from '../../services/integration';
 import { NgForOf, NgIf } from '@angular/common';
 import {
-  IconComponent,
-  IconPack, IconPackApplications, IconPackLonghorn, IconPackWhistler,
-  IconPackXp, IconPackXpSP2
+  XPIconComponent,
+  IconPack, IconNames
 } from 'ngx-xp-icons';
 
 @Component({
   selector: 'app-main-sidepanel',
   standalone: true,
-  imports: [NgForOf, NgIf, IconComponent],
+  imports: [NgForOf, NgIf, XPIconComponent],
   templateUrl: './main-sidepanel.component.html',
   styleUrl: './main-sidepanel.component.scss',
 })
@@ -20,25 +19,24 @@ export class MainSidepanelComponent {
   @Output() folderSelection: EventEmitter<CommonFolder> =
     new EventEmitter<CommonFolder>();
 
-  getIconName(item: CommonFolder): IconPackXp | IconPackXpSP2 | IconPackLonghorn | IconPackWhistler | IconPackApplications {
+  getIconName(item: CommonFolder): IconNames {
     switch (item.icon) {
       case 'home':
-        return ((): IconPackXp => 'my-documents')();
+        return 'my-documents';
       case 'root':
-        return ((): IconPackXp => 'local-disk')();
+        return 'local-disk';
       default:
-        return ((): IconPackXp => 'question')();
+        return 'question';
     }
   }
 
   getIconPack(item: CommonFolder): IconPack {
     switch (item.icon) {
       case 'home':
-        return ((): IconPack => 'xp')();
       case 'root':
-        return ((): IconPack => 'xp')();
+        return 'xp';
       default:
-        return ((): IconPack => 'xp')();
+        return 'xp';
     }
   }
 }

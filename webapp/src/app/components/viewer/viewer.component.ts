@@ -18,6 +18,22 @@ export class ViewerComponent {
   activeItem?: ModelFile;
   doubleClickInitiated: boolean = false;
 
+  get items(): ModelFile[] {
+    return this.selectedItem?.content.sort((a:ModelFile, b:ModelFile) => {
+      if (a.isFolder && b.isFolder) return 0
+      if (a.isFolder && !b.isFolder) return -1
+      if (!a.isFolder && b.isFolder) return 1
+
+      const extA = a.filename.includes('.') ? a.filename.split('.').pop()?.toLowerCase() || '' : '';
+      const extB = b.filename.includes('.') ? b.filename.split('.').pop()?.toLowerCase() || '' : '';
+
+      if (extA < extB) return -1;
+      if (extA > extB) return 1;
+
+      return a.filename.localeCompare(b.filename);
+    }) || []
+  }
+
   clickItem(item?: ModelFile) {
     console.log("click", item)
     if (item && !this.doubleClickInitiated) {

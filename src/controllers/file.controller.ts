@@ -11,10 +11,10 @@ import {
 } from "@nestjs/common";
 import {
   ApiBody,
-  ApiConsumes, ApiForbiddenResponse, ApiInternalServerErrorResponse,
+  ApiConsumes, ApiDefaultResponse, ApiForbiddenResponse, ApiInternalServerErrorResponse,
   ApiNoContentResponse,
   ApiNotFoundResponse,
-  ApiOkResponse, ApiOperation,
+  ApiOkResponse, ApiOperation, ApiProduces, ApiResponse,
   ApiTags
 } from "@nestjs/swagger";
 import File from "../dto/File";
@@ -38,6 +38,7 @@ export class FileController {
     description: "Returns the details of the file",
     type: File
   })
+  @ApiProduces('application/json')
   @ApiNotFoundResponse({
     description: "The file is not found",
     type: ApplicativeError
@@ -52,7 +53,7 @@ export class FileController {
   })
   @ApiOperation({
     operationId: "getFile",
-    description: "Gets the metadata of a single file of folder, if folder also the content light metadata is provided"
+    description: "Gets the metadata of a single file of folder, if folder also the content light metadata is provided",
   })
   async getFile(@Param("path") path: string, @Res() res: Response) {
     this.logger.debug('GET File operation', path)

@@ -3,7 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../node_modules/7.css/dist/7.css";
+//@import "../node_modules/7.css/dist/7.css";
+@import "../node_modules/xp.css/dist/XP.css";
 
 html {
   background-image: url("/wallpaper.jpg");
@@ -14,7 +15,7 @@ html {
 html, body {
   margin: 0;
   height: 100%;
-
+  font-family: "Verdana", Arial, serif;
   app-root {
     //position: fixed;
     //top: 16px;
@@ -22,6 +23,14 @@ html, body {
     //left: 16px;
     //right: 16px;
   }
+}
+
+button {
+  background: revert;
+}
+
+.title-bar {
+  height: revert;
 }
 
 .seven-hover {

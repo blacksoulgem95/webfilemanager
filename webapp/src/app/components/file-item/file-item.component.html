@@ -1,6 +1,10 @@
-<div class="flex flex-col justify-center items-center seven-hover py-1 px-1.5 text-center">
+<div *ngIf="!isRow" class="select-none flex flex-col justify-center items-center seven-hover py-1 px-1.5 text-center cursor-default">
   <xpi-icon size="32" [pack]="icon.pack" [name]="icon.name" />
   <span>{{file.filename}}
     <span *ngIf="!file.isFolder">({{file.fileSize | byte}})</span>
   </span>
+</div>
+<div *ngIf="isRow" class="select-none flex flex-row justify-start items-center py-1 px-1.5 text-left cursor-default">
+  <xpi-icon size="16" [pack]="icon.pack" [name]="icon.name"></xpi-icon>
+  <span>{{file.filename}}</span>
 </div>
